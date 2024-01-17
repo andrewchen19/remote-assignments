@@ -87,7 +87,6 @@ header {
 
 /* boxes */
 .boxes {
-  border: 2px solid red;
   padding: 30px 15px;
   text-align: center;
 }
