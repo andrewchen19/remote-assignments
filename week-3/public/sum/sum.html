@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 3 Assignment</title>
+    <!-- 從 public 資料夾內部尋找 -->
+    <link rel="stylesheet" href="/sum/style.css" />
+  </head>
+  <body>
+    <main>
+      <form action="/getData" method="get" class="form">
+        <label for="number" class="form-label">
+          Please provide a positive integer：
+        </label>
+        <input type="text" id="number" name="number" class="form-input" />
+        <div class="btn-container">
+          <button type="submit" class="btn">submit</button>
+        </div>
+      </form>
+    </main>
+    <script src="/sum/sum.js"></script>
+  </body>
+</html>

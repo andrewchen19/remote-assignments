@@ -1,0 +1,91 @@
+/* ============ GLOBAL CSS ============ */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
+    "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+:root {
+  /* colors */
+  --white: #fff;
+  --gray: #d1d5db;
+  --blue-light: #35719e;
+  --blue-dark: #1c5784;
+
+  /* vars */
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --small-text: 0.875rem;
+  --fixed-width: 600px;
+  --max-width: 1120px;
+  --fluid-width: 90vw;
+
+  /* shadows */
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ============ PROJECT CSS ============ */
+.form {
+  width: var(--fluid-width);
+  max-width: var(--fixed-width);
+  background: var(--gray);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+  margin: 3rem auto;
+}
+.form-label {
+  display: block;
+  font-size: var(--small-text);
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+.form-input {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--white);
+  border: 1px solid var(--gray);
+}
+.btn-container {
+  margin-top: 2rem;
+}
+.btn {
+  display: inline-flex;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--blue-light);
+  border: transparent;
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  text-transform: capitalize;
+}
+.btn:hover {
+  background: var(--blue-dark);
+  box-shadow: var(--shadow-3);
+}
