@@ -55,7 +55,8 @@ app.get("/myName", (req, res) => {
   }
 
   const html = `<h1>Your name is ${name}</h1>`;
-  res.send(html);
+  const home = `<a href="/"><button>home</button></a>`;
+  res.send(html + home);
 });
 
 app.get("/trackName", (req, res) => {
