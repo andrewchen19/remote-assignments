@@ -83,6 +83,8 @@ app.all("*", (req, res) => {
   res.status(404).send("page not found");
 });
 
-app.listen(3000, () => {
-  console.log("server is listen on port 3000...");
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}...`);
 });
