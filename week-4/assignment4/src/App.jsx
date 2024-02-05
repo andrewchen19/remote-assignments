@@ -39,7 +39,7 @@ function App() {
     <>
       <Title />
       <RepoContainer data={data} />
-      <MoreButton page={page} setPage={setPage} />
+      <MoreButton setPage={setPage} />
     </>
   );
 }

@@ -61,6 +61,7 @@ main {
 .repo-topics {
   display: flex;
   gap: 5px;
+  flex-wrap: wrap;
 }
 .repo-topic {
   color: #0969da;
