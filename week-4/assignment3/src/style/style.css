@@ -46,8 +46,7 @@ main {
 main h2 {
   margin-bottom: 2rem;
 }
-.box-container1,
-.box-container2 {
+.box-container {
   margin: 0 auto;
   max-width: 1200px;
   display: grid;
@@ -114,8 +113,7 @@ main h2 {
 
 /* Media Queries */
 @media screen and (min-width: 500px) {
-  .box-container1,
-  .box-container2 {
+  .box-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
