@@ -7,14 +7,16 @@ import { list } from "./data";
 function App() {
   const [counterList, setCounterList] = useState(list);
   const nextCounterId = useRef(4);
+  console.log(counterList);
+  console.log(nextCounterId);
 
   // event handling
   const increaseHandler = (id) => {
     setCounterList((prevCounterList) =>
       prevCounterList.map((item) => {
         if (item.id === id) {
-          item.number++;
-          return item;
+          // ! ++ 會更改 item 本身，可能導致非預期的結果
+          return { id: item.id, number: item.number + 1 };
         }
         return item;
       })
@@ -24,20 +26,21 @@ function App() {
   const allIncreaseHandler = () => {
     setCounterList((prevCounterList) =>
       prevCounterList.map((item) => {
-        item.number++;
-        return item;
+        // ! ++ 會更改 item 本身，可能導致非預期的結果
+        return { id: item.id, number: item.number + 1 };
       })
     );
   };
 
   const generateHandler = () => {
-    setCounterList((prevCounterList) => [
-      ...prevCounterList,
-      {
-        id: nextCounterId.current,
-        number: 0,
-      },
-    ]);
+    // ! 分離了 current 遞增 & 更新 counterList 的動作，確保動作的順序 & 同步性
+    const newCounterList = [
+      ...counterList,
+      { id: nextCounterId.current, number: 0 },
+    ];
+
+    setCounterList(newCounterList);
+
     nextCounterId.current++;
   };
 
