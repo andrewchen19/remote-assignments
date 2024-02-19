@@ -12,28 +12,30 @@ function App() {
 
   // event handling
   const increaseHandler = (id) => {
-    setCounterList((prevCounterList) =>
-      prevCounterList.map((item) => {
-        if (item.id === id) {
-          // ! ++ 會更改 item 本身，可能導致非預期的結果
-          return { id: item.id, number: item.number + 1 };
-        }
-        return item;
-      })
-    );
+    const newCounterList = counterList.map((item) => {
+      if (item.id === id) {
+        // ! ++ doesn't increment the variable immediately, may lead to unexpected behavior
+        // ! ++ returns the previous value , and the increment operation occurs on the next access
+        return { ...item, number: item.number + 1 };
+      }
+      return item;
+    });
+
+    setCounterList(newCounterList);
   };
 
   const allIncreaseHandler = () => {
-    setCounterList((prevCounterList) =>
-      prevCounterList.map((item) => {
-        // ! ++ 會更改 item 本身，可能導致非預期的結果
-        return { id: item.id, number: item.number + 1 };
-      })
-    );
+    const newCounterList = counterList.map((item) => {
+      // ! ++ doesn't increment the variable immediately, may lead to unexpected behavior
+      // ! ++ returns the previous value , and the increment operation occurs on the next access
+      return { ...item, number: item.number + 1 };
+    });
+
+    setCounterList(newCounterList);
   };
 
   const generateHandler = () => {
-    // ! 分離了 current 遞增 & 更新 counterList 的動作，確保動作的順序 & 同步性
+    // ! 建立新的變數，分離 current 遞增 & 更新 counterList 的動作，確保動作的順序 & 同步性
     const newCounterList = [
       ...counterList,
       { id: nextCounterId.current, number: 0 },
@@ -41,7 +43,20 @@ function App() {
 
     setCounterList(newCounterList);
 
+    // ! current 遞增的動作不會受到 React's batching operation 的影響
     nextCounterId.current++;
+
+    // ? 替代寫法 2 (better option)
+    // setCounterList((prevCounterList) => {
+    //   const newCounterList = [
+    //     ...prevCounterList,
+    //     { id: nextCounterId.current, number: 0 },
+    //   ];
+
+    //   nextCounterId.current++;
+
+    //   return newCounterList;
+    // });
   };
 
   return (
